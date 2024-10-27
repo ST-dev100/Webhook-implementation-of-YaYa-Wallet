@@ -88,15 +88,31 @@ exports.down = function(knex) {
     ```
     npx knex migrate:latest
     Usage
-Start the server:
+**Start the server:**
 
     ```
     node index.js
 The server will run on http://localhost:3000.
+Exposing Your Local Server
+To expose your local server to the internet and use HTTPS, you can use ngrok. Here’s how:
+
+Install ngrok: If you haven't already, download and install ngrok from ngrok.com.
+
+Start ngrok: Open a new terminal window and run the following command:
+
+ngrok http 3000
+This command will create a secure tunnel to your local server running on port 3000.
+
+Get the HTTPS URL: After running the command, ngrok will provide you with a forwarding URL that looks something like this:
+
+
+Forwarding                    https://abc123.ngrok.io -> http://localhost:3000
+Register the webhook URL with YaYa Wallet: In your YaYa Wallet dashboard, register the webhook endpoint to receive notifications. Use the ngrok HTTPS URL, e.g., https://abc123.ngrok.io/webhook.
+
 
 Register the webhook URL with YaYa Wallet:
 
-In your YaYa Wallet dashboard, register the webhook endpoint to receive notifications. Use the URL https://your-server-ip:3000/webhook.
+In your YaYa Wallet dashboard, register the webhook endpoint to receive notifications. Use the URL https://abc123.ngrok.io/webhook.
 
 ## Endpoints
 POST /webhook
