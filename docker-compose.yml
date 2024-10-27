@@ -1,0 +1,31 @@
+# docker-compose.yml
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - DATABASE_URL=postgres://postgres:password@db:5432/my_database
+      - YAYA_SECRET=your_yaya_secret_key
+      - PORT=3000
+    depends_on:
+      - db
+    ports:
+      - '3000:3000'
+    command: sh -c "npx knex migrate:latest && npm start"
+
+  db:
+    image: postgres:14
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: my_database
+    ports:
+      - '5432:5432'
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
