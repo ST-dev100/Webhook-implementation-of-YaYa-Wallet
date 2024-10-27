@@ -10,6 +10,6 @@ app.use(express.json());
 app.use('/webhook', webhookRouter);
 
 // Start the server
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
   console.log('Server is running on port 3000');
 });
