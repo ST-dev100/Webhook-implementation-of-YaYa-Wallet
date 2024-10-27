@@ -93,7 +93,7 @@ exports.down = function(knex) {
     ```
     node index.js
 The server will run on http://localhost:3000.
-Exposing Your Local Server
+**Exposing Your Local Server**
 To expose your local server to the internet and use HTTPS, you can use ngrok. Here’s how:
 
 Install ngrok: If you haven't already, download and install ngrok from ngrok.com.
